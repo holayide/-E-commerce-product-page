@@ -62,7 +62,7 @@ export default function HeroImage() {
 
             {/* Cancel button */}
             <div className="flex justify-end">
-              <AlertDialogCancel className="p-0 h-4 text-white hover:text-red-500">
+              <AlertDialogCancel className="p-0 h-4 text-white hover:text-primary">
                 <X size={24} strokeWidth={2.5} />
               </AlertDialogCancel>
             </div>
