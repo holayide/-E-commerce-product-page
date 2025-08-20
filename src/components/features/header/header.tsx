@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <header className="h-21 pb-2 flex items-center justify-between border-b-2 border-accent-foreground">
+    <header className="container h-21 pb-2 flex items-center justify-between border-b-2 border-accent-foreground">
       <div className="flex items-center">
         <div className="block md:hidden mr-3">
           <img
