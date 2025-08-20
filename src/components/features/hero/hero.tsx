@@ -1,12 +1,16 @@
-import HeroContent from "./heroContent";
+import HeroContent from "./hero-text-wrapper/heroContent";
 import HeroImage from "./hero-img-contents/heroImage";
+import CartCard from "./cartCard";
 
-export default function Hero() {
+export default function Hero({ isOpenCart }: { isOpenCart: boolean }) {
   return (
-    <section className="xs:pt-20 mb-6">
-      <div className="max-w-6xl mx-auto xs:px-4 md:px-10 grid grid-cols-1 xs:grid-cols-2 items-center gap-6 lg:gap-0">
-        <HeroImage />
-        <HeroContent />
+    <section className="max-w-[1316px] mx-auto pb-6 relative">
+      <div className="max-w-6xl mx-auto xs:pt-20 xs:px-4 md:px-10">
+        <div className="grid grid-cols-1 xs:grid-cols-2 items-center gap-6 lg:gap-0">
+          <HeroImage />
+          <HeroContent />
+        </div>
+        <CartCard isOpenCart={isOpenCart} />
       </div>
     </section>
   );

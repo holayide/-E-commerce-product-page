@@ -1,9 +1,18 @@
+import { useContext } from "react";
+
+import { CartContext } from "@/context/cartContext";
+import { Button } from "@/components/ui/button";
+
+import cart from "@/assets/icons/icon-cart-black.svg";
 import minus from "@/assets/icons/icon-minus.svg";
 import plus from "@/assets/icons/icon-plus.svg";
-import { Button } from "@/components/ui/button";
-import cart from "@/assets/icons/icon-cart-black.svg";
 
 export default function HeroContent() {
+  const cartContext = useContext(CartContext);
+
+  if (!cartContext) return null;
+  const { quantity, increase, decrease, addToCart } = cartContext;
+
   return (
     <div className="">
       <div className="px-4 xs:px-0">
@@ -37,16 +46,19 @@ export default function HeroContent() {
 
         <div className="max-w-[480px] flex flex-col xxs:flex-row gap-4 xxs:gap-3.5">
           <div className="w-full xxs:w-[37%] h-13 px-2 flex items-center justify-between bg-accent-foreground rounded-xl">
-            <div className="cursor-pointer">
+            <button onClick={decrease} className="cursor-pointer">
               <img src={minus} alt="minus" />
-            </div>
-            <span>0</span>
-            <div className="cursor-pointer">
+            </button>
+            <span>{quantity}</span>
+            <button onClick={increase} className="cursor-pointer">
               <img src={plus} alt="plus" />
-            </div>
+            </button>
           </div>
           <div className="flex-1">
-            <Button className="w-full h-13 text-base font-bold text-foreground flex items-center justify-center cursor-pointer">
+            <Button
+              onClick={addToCart}
+              className="w-full h-13 text-base font-bold text-foreground flex items-center justify-center cursor-pointer"
+            >
               <img src={cart} alt="cart" className="h-4" />
               Add to cart
             </Button>

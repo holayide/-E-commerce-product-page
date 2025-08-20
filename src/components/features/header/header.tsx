@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
+import { CartContext } from "@/context/cartContext";
 import NavItems from "../navItems/navItems";
 import { navItem } from "../../../lib/data";
+import type { HeaderProp } from "../type";
 
 import avatar from "@/assets/images/image-avatar.png";
 import menu from "@/assets/icons/icon-menu.svg";
@@ -9,8 +11,12 @@ import cart from "@/assets/icons/icon-cart.svg";
 import logo from "@/assets/icons/logo.svg";
 import MobileNav from "./mobileNav";
 
-export default function Header() {
+export default function Header({ handleIsOpenCart }: HeaderProp) {
   const [isOpen, setIsOpen] = useState(false);
+  const product = useContext(CartContext);
+
+  if (!product) return null;
+  const { inCart, quantity } = product;
 
   const handleIsOpen = () => {
     setIsOpen((open) => !open);
@@ -44,9 +50,20 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-8">
-        <div>
-          <img src={cart} alt="cart" className="cursor-pointer" />
+        <div className="relative">
+          <img
+            src={cart}
+            alt="cart"
+            className="cursor-pointer"
+            onClick={handleIsOpenCart}
+          />
+          {inCart && quantity > 0 && (
+            <span className="absolute -top-2 -right-2 bg-primary text-white py-[.1px] px-[6px] text-[10px] rounded-3xl">
+              {quantity}
+            </span>
+          )}
         </div>
+
         <img
           src={avatar}
           alt="avatar"
