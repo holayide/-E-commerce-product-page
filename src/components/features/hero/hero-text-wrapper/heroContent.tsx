@@ -4,8 +4,7 @@ import { CartContext } from "@/context/cartContext";
 import { Button } from "@/components/ui/button";
 
 import cart from "@/assets/icons/icon-cart-black.svg";
-import minus from "@/assets/icons/icon-minus.svg";
-import plus from "@/assets/icons/icon-plus.svg";
+import { Minus, Plus } from "lucide-react";
 
 export default function HeroContent() {
   const cartContext = useContext(CartContext);
@@ -47,11 +46,19 @@ export default function HeroContent() {
         <div className="max-w-[480px] flex flex-col xxs:flex-row gap-4 xxs:gap-3.5">
           <div className="w-full xxs:w-[37%] h-13 px-2 flex items-center justify-between bg-accent-foreground rounded-xl">
             <button onClick={decrease} className="cursor-pointer">
-              <img src={minus} alt="minus" />
+              <Minus
+                strokeWidth={3}
+                size={16}
+                className="text-primary hover:text-primary/60"
+              />
             </button>
             <span>{quantity}</span>
             <button onClick={increase} className="cursor-pointer">
-              <img src={plus} alt="plus" />
+              <Plus
+                strokeWidth={3}
+                size={16}
+                className="text-primary hover:text-primary/60"
+              />
             </button>
           </div>
           <div className="flex-1">
