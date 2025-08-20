@@ -7,7 +7,7 @@ export default function NavItems({ path, title, handleIsOpen }: Item) {
       <NavLink
         to={path}
         onClick={handleIsOpen}
-        className="md:pb-[34px] md:hover:border-b-[3px] md:hover:border-primary"
+        className="md:pb-[30px] md:hover:border-b-[3px] md:hover:border-primary"
       >
         {title}
       </NavLink>
